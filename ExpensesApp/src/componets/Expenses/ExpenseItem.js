@@ -1,0 +1,29 @@
+import "./ExpenseItem.css";
+import { useState } from "react";
+import ExpenseDate from "./ExpenseDate";
+import Card from "../UI/Card";
+
+//the paramater - 'props' you can named what ever you want
+const ExpenseItem = (props) => {
+  const [title, setTitle] = useState(props.title);
+  console.log("ExpenseItem ecaluated by React");
+  //this log will be executed for times because we have foor expensteitem
+
+  const clickHandler = () => {
+    setTitle("Update");
+  };
+  return (
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
+        <button onClick={clickHandler}>Change Title</button>
+      </Card>
+    </li>
+  );
+};
+
+export default ExpenseItem;
